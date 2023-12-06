@@ -174,6 +174,87 @@ end)
             CFrameQuest = CFrame.new(-1599.23096, 37.8653831, 153.335953, -0.0493941903, 1.29583286e-08, 0.998779356, 3.21716165e-08, 1, -1.13831318e-08, -0.998779356, 3.15700852e-08, -0.0493941903)
             CFrameMon = CFrame.new(-1242.46655, 6.62262297, -523.166382, -0.974416733, 9.23166681e-08, -0.224748924, 9.58993027e-08, 1, -5.02435071e-09, 0.224748924, -2.64490758e-08, -0.974416733)
             CFramePuk = CFrame.new(-1133.4574, 40.8067436, -526.086792, 0.647179008, -2.76535794e-10, 0.762338042, 3.26674865e-08, 1, -2.73699801e-08, -0.762338042, 4.26169464e-08, 0.647179008)
+            spawn(function()
+                while task.wait(.1) do
+                    pcall(function()
+                        if _G.Auto_Farm then
+                        checklevel()
+                            if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+            totarget(CFrameQuest)
+            wait(.3)
+            local args = {
+                [1] = "StartQuest",
+                [2] = QuestName,
+                [3] = QuestNumber
+            }
+            
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+            elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    for i,v2 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v.Name == Mon and v2.Name == Mon then
+                        totarget(v.HumanoidRootPart.CFrame * CFrame.new(0,1,15))
+                        v.HumanoidRootPart.Size = Vector3.new(60,2.5,60)
+                        v.HumanoidRootPart.CFrame = CFrameMon
+                        game:GetService'VirtualUser':CaptureController()
+                        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                        v2.HumanoidRootPart.CanCollide = false
+                        sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                    end
+                    end
+                end
+                            end
+                        end
+                    end)
+                end
+            end)
+            
+            spawn(function()
+                while task.wait(.1) do
+                    pcall(function()
+                        if _G.AutoFarm then
+                        checklevel()
+                if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, Title) then
+            local args = {
+                [1] = "AbandonQuest"
+            }
+            
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                end
+                        end
+                    end)
+                end
+            end)
+            
+            spawn(function()
+                while task.wait(.1) do
+                    pcall(function()
+                        if _G.AutoFarm then
+                        checklevel()
+                        if not game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
+                            totarget(CFramePuk)
+                        end
+                        end
+                    end)
+                end
+            end)
+            
+            spawn(function()
+                while task.wait(.1) do
+                    pcall(function()
+                        if _G.AutoFarm then
+                        checklevel()
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v.Name == Mon then
+                        if v.Humanoid.Health == 0 then
+                        v:Destroy()
+                        end
+                        end
+                        end
+                        end
+                    end)
+                end
+            end)    
         end
     end
 	CheckQuest()
@@ -184,87 +265,8 @@ end)
 			game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
 		end
 	end
-    spawn(function()
-        while task.wait(.1) do
-            pcall(function()
-                if _G.Auto_Farm then
-                checklevel()
-                    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-    totarget(CFrameQuest)
-    wait(.3)
-    local args = {
-        [1] = "StartQuest",
-        [2] = QuestName,
-        [3] = QuestNumber
-    }
     
-    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
-        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-            for i,v2 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-            if v.Name == Mon and v2.Name == Mon then
-                totarget(v.HumanoidRootPart.CFrame * CFrame.new(0,1,15))
-                v.HumanoidRootPart.Size = Vector3.new(60,2.5,60)
-                v.HumanoidRootPart.CFrame = CFrameMon
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                v2.HumanoidRootPart.CanCollide = false
-                sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-            end
-            end
-        end
-                    end
-                end
-            end)
-        end
-    end)
-    
-    spawn(function()
-        while task.wait(.1) do
-            pcall(function()
-                if _G.Auto_Farm then
-                checklevel()
-        if not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, Title) then
-    local args = {
-        [1] = "AbandonQuest"
-    }
-    
-    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-        end
-                end
-            end)
-        end
-    end)
-    
-    spawn(function()
-        while task.wait(.1) do
-            pcall(function()
-                if _G.Auto_Farm then
-                checklevel()
-                if not game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
-                    totarget(CFramePuk)
-                end
-                end
-            end)
-        end
-    end)
-    
-    spawn(function()
-        while task.wait(.1) do
-            pcall(function()
-                if _G.Auto_Farm then
-                checklevel()
-                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-            if v.Name == Mon then
-                if v.Humanoid.Health == 0 then
-                v:Destroy()
-                end
-                end
-                end
-                end
-            end)
-        end
-    end)
+
     
 	page1:Label("Auto Farm",0)
 	page1:Toggle("Auto Farm",_G.AutoFarm,function(vu)
