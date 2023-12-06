@@ -735,7 +735,7 @@ end
         local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = CFgo})
         tween:Play()
         if Distance2 <= 75 then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = p
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFgo
         end
     end
 --[[function totarget(CFgo)
