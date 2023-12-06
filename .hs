@@ -11444,3 +11444,4 @@ for i,v2 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
     v2.HumanoidRootPart.CanCollide = false
     v2.HumanoidRootPart.Size = Vector3.new(60,2.5,60)
 end
+end
