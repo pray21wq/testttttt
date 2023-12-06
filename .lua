@@ -728,24 +728,14 @@ end
 	)
 	local LocalPlayer = game:GetService("Players").LocalPlayer
 	local VirtualUser = game:GetService('VirtualUser')
-    function totarget(CFgo)
-        local Distance2 = (CFgo.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-        local tween_s = game:service"TweenService"
-        local info = TweenInfo.new(Distance2/350, Enum.EasingStyle.Linear)
-        local tween = tween_s:Create(game:GetService("Players").LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = CFgo})
-        tween:Play()
-        if Distance2 <= 75 then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFgo
-        end
-    end
---[[function totarget(CFgo)
+
+function totarget(CFgo)
     local tween_s = game:service"TweenService"
     local info = TweenInfo.new((game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - CFgo.Position).Magnitude/250, Enum.EasingStyle.Linear)
     local tween, err = pcall(function()
         tween = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = CFgo})
         tween:Play()
     end)
-    ]]
     if not tween then return err end
 end
 
