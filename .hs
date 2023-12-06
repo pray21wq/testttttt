@@ -343,7 +343,7 @@ local args = {
 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
 end
 
-page2:Toggle("FastAttack",true,function(state)
+page2:Toggle("FastAttack", function(state)
 if state then
     -- Use Function
 NeedAttacking = true
