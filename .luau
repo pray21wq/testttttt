@@ -11139,7 +11139,7 @@ getgenv().Settings = {
     NoAttackAnimation = true,
     NewFastAttack = true,
     FastAttack = true,
-    DamageAura = false,
+    DamageAura = true,
 }
 
 local kkii = require(game.ReplicatedStorage.Util.CameraShaker)
@@ -11280,7 +11280,7 @@ task.spawn(function()
     local AttackCD = 0
     local Controller
     local lastFireValid = 0
-    local MaxLag = 350
+    local MaxLag = 1000
     fucker = 0.07
     TryLag = 0
 
