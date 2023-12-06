@@ -11133,7 +11133,7 @@ end
 
 
     -- Use Function
-if NeedAttacking then
+NeedAttacking = true
 
 getgenv().Settings = {
     NoAttackAnimation = true,
@@ -11415,11 +11415,9 @@ game.Players.LocalPlayer.CharacterAdded:Connect(function(Chr)
     Chr.ChildAdded:Connect(DestroyBusy)
     OnChar(Chr)
 end)
-end
 
-page2:Toggle("Fast ATTACK GG",_G.NeedAttacking,function(value)
-    _G.NeedAttacking = value
-end)
+
+
 
 
 -- Function to rename enemies and replicated storage objects
@@ -11440,13 +11438,8 @@ task.spawn(function()
         end)
     end
 end)
-page2:Toggle("Bring MOB",true,function(state)
-    if state then
-        for i,v2 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-            v2.HumanoidRootPart.CanCollide = false
-        end
-    else
-        print("hello work state")
-    end
 
-end)
+
+for i,v2 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+    v2.HumanoidRootPart.CanCollide = false
+end
