@@ -5,21 +5,10 @@ local create = loadstring(game:HttpGet("https://raw.githubusercontent.com/cafehe
  
     
     local page1 = Tap1:newpage()
-    local page2 = Tap1:newpage()
-    local page3 = Tap2:newpage()
-    local page4 = Tap2:newpage()
-    local page5 = Tap3:newpage()
-    local page6 = Tap3:newpage()
-    local page7 = Tap5:newpage()
-    local page8 = Tap5:newpage()
-    local page9 = Tap4:newpage()
-    local page10 = Tap4:newpage()
-    local page11 = Tap6:newpage()
-    local page12 = Tap6:newpage()
 
 	page1:Label("Auto Farm",0)
 	page1:Toggle("Auto Farm",_G.Auto_Farm,function(value)
-        _G.Auto_Farm = value
+        _G.Auto_Farm = true
 	end)
 
     if _G.Auto_Farm then 
